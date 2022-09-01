@@ -65,7 +65,7 @@ function buildCharts(sample) {
     var firstSample = samplesResult[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otuIDS = firstSample.otu_ids;
+    var otu_ids = firstSample.otu_ids;
     var otuLabels = firstSample.otu_labels;
     var sampleValues = firstSample.sample_values;
 
@@ -73,34 +73,21 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = otuIDS.slice(0,10).map(id => "OTU " + id).reverse();
+    var yticks = otuIDs.slice(0,10).map(id => "OTU " + id).reverse();
 
     // 8. Create the trace for the bar chart. 
-    var barData = [{
+    var trace = {
+      y: yticks,
       x: sampleValues.slice(0,10).reverse(),
       text: otuLabels.slice(0,10).reverse(),
-      type: "bar"      
-    }];
+      type: "bar",
+      orientation: "h"      
+    };
     // 9. Create the layout for the bar chart. 
-    var barLayout = {
+    var layout = {
       title: "Top 10 bacterial species (OTUs)"
-      yaxis: {
-        tickmode: "array",
-        tickvals: [0,1,2,3,4,5,6,7,8,9],
-        ticktext: yticks
-      },
-      annotation: [{
-        xref: 'paper',
-        yref: 'paper',
-        x: 0.5,
-        xanchor: 'center',
-        y: -0.25,
-        yanchor: 'center'
-        text: 'The bar chart displays the top 10 bacterial species (OTUs)<br>with the number of samples found in your belly button',
-        showarrow: false
-      }]
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar", barData, barLayout, {responsive: true});
+    Plotly.newPlot("bar", trace, layout);
   });
 }
