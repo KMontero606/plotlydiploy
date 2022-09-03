@@ -9,14 +9,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
-<body>
+<body style="background-color: teal;">
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12 jumbotron text-center">
-        <h1>Belly Button Biodiversity Dashboard</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
+      <div class="col-md-12 jumbotron text-center" style="background-image: url('http://studentsdiscover.org/wp-content/uploads/bbb_banner2.jpg'); background-position: center; background-size: cover; height: 250px;">
+        <!--<h1 style="color: saddlebrown">Belly Button Biodiversity Dashboard</h1>-->
       </div>
+      <p style="color: maroon">Use the interactive charts below to explore the dataset</p>
     </div>
     <div class="row">
       <div class="col-md-2">
@@ -31,16 +31,19 @@
           <div id="sample-metadata" class="panel-body"></div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-xs-6 col-md-4">
         <div id="bar"></div>
+          <p style="color: maroon">OTU stands for Operational Taxonomic Unit, and here it means species or bacterial type.</p>
       </div>
-      <div class="col-md-5">
+      <div class="col-xs-6 col-md-4">
         <div id="gauge"></div>
+          <p style="color: maroon">The gauge depicts the washing frequency of one's navel on a weekly basis.</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div id="bubble"></div>
+          <p style="color: maroon">The bubble chart depicts bacteria cultures for each bacterial type.</p>
       </div>
     </div>
   </div>
@@ -48,7 +51,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="charts.js"></script>
-
 
 </body>
 

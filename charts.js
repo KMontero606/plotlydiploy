@@ -89,12 +89,17 @@ function buildCharts(sample) {
       x: sampleValues.slice(0, 10).reverse(),
       text: otuLabels.slice(0, 10).reverse(),
       type: "bar",
-      orientation: "h"      
+      orientation: "h",
+      marker: {
+        color: 'rgba(255,153,51,0.6)'
+      }      
     }];
     // 9. Create the layout for the bar chart. 
     var layout = {
       title: "Top 10 bacterial species (OTUs)",
-      margin: { l: 100, r: 100, t: 100, b: 100 }
+      margin: { l: 100, r: 100, t: 100, b: 100 },
+      paper_bgcolor: '#FFA07A',
+      plot_bgcolor: '#F0E68C',
     };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", trace, layout);
@@ -108,7 +113,8 @@ function buildCharts(sample) {
       mode: 'markers',
       marker: {
         size: sampleValues,
-        color: otuIDs 
+        color: otuIDs,
+        colorscale: 'Earth' 
       }
     }];
 
@@ -116,7 +122,10 @@ function buildCharts(sample) {
     var bubbleLayout = {
       title: 'Bacteria Cultures Per Sample',
       xaxis: {title: 'OTU ID'},
-      margins: {t: 0},
+      automargin: true,
+      autosize: true,
+      paper_bgcolor: '#FFA07A',
+      plot_bgcolor: '#F0E68C',
       hovermode: "closest"
     };
 
@@ -156,10 +165,18 @@ function buildCharts(sample) {
     
     // 5. Create the layout for the gauge chart.
     var gaugeLayout = { 
-      width: 600, height: 450, margin: { t: 0, b: 0 }     
+      width: 600, height: 450, margin: { t: 0, b: 0 },
+      paper_bgcolor: '#FFA07A'     
     };
 
     // 6. Use Plotly to plot the gauge data and layout.
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
   });
 };
+
+// Deliverable 4: Customize the Dashboard
+// 1. Customize your dashboard:
+// a. Added an image to the jumbotron.
+// b. Added background color or a variety of compatible colors to the webpage.
+// c. Added information about what each graph visualizes, either under or next to each graph.
+// d. Made the webpage mobile-responsive.
