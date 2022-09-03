@@ -129,7 +129,7 @@ Customize the dashboard by adding an image to the jumbotron, adding background c
 ## Summary:
 When my webpage is deployed in a local server, my webpage is rendered with customization added,
 
-<img width="956" alt="image" src="https://user-images.githubusercontent.com/106962921/188249366-ac1df184-dd0e-4335-9969-4e5cbcb8266e.png">
+<img width="963" alt="image" src="https://user-images.githubusercontent.com/106962921/188250560-16102db0-77d0-4a20-b54c-97d0d54fca9f.png">
 
 <img width="941" alt="image" src="https://user-images.githubusercontent.com/106962921/188249296-4cbb8194-90f2-4341-a483-5e56f1c5de9c.png">
 
