@@ -3,7 +3,83 @@
 ## Overview of Project:
 
 ## Results:
+### Deliverable 1: Create a Horizontal Bar Chart
+```
+// Deliverable 1: Create a Horizontal Bar Chart
+// 1. Create the buildCharts function.
+function buildCharts(sample) {
+  // 2. Use d3.json to load and retrieve the samples.json file 
+  d3.json("samples.json").then((data) => {
+    console.log(data);
+    // 3. Create a variable that holds the samples array. 
+    var samplesArray = data.samples;
+    console.log(samplesArray); 
+    // 4. Create a variable that filters the samples for the object with the desired sample number.
+    var samplesResult = samplesArray.filter(data => data.id == sample);
+    console.log(samplesResult);
+    //  5. Create a variable that holds the first sample in the array.
+    var firstSample = samplesResult[0];
+    console.log(firstSample);
 
+    // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+    var otuIDs = firstSample.otu_ids;
+    console.log(otuIDs);
+    var otuLabels = firstSample.otu_labels;
+    console.log(otuLabels);
+    var sampleValues = firstSample.sample_values;
+    console.log(sampleValues);
+
+    // 7. Create the yticks for the bar chart.
+    // Hint: Get the the top 10 otu_ids and map them in descending order  
+    //  so the otu_ids with the most bacteria are last. 
+
+    var yticks = otuIDs.slice(0, 10).map(otu_ids => `OTU ${otu_ids}`).reverse();
+    console.log(yticks);
+
+    // 8. Create the trace for the bar chart. 
+    var trace = [{
+      y: yticks,
+      x: sampleValues.slice(0, 10).reverse(),
+      text: otuLabels.slice(0, 10).reverse(),
+      type: "bar",
+      orientation: "h"      
+    }];
+    // 9. Create the layout for the bar chart. 
+    var layout = {
+      title: "Top 10 bacterial species (OTUs)",
+      margin: { l: 100, r: 100, t: 100, b: 100 }
+    };
+    // 10. Use Plotly to plot the data with the layout. 
+    Plotly.newPlot("bar", trace, layout);
+```
+
+### Deliverable 2: Create a Bubble Chart
+```
+// Deliverable 2: Create a Bubble Chart.
+    // 1. Create the trace for the bubble chart.
+    var bubbleData = [{
+      x: otuIDs,
+      y: sampleValues,
+      text: otuLabels,
+      mode: 'markers',
+      marker: {
+        size: sampleValues,
+        color: otuIDs 
+      }
+    }];
+
+    // 2. Create the layout for the bubble chart.
+    var bubbleLayout = {
+      title: 'Bacteria Cultures Per Sample',
+      xaxis: {title: 'OTU ID'},
+      margins: {t: 0},
+      hovermode: "closest"
+    };
+
+    // 3. Use Plotly to plot the data with the layout.
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+```
+### 
 ## Summary:
 When my webpage is deployed in a local server, my webpage is rendered with customization added,
 
